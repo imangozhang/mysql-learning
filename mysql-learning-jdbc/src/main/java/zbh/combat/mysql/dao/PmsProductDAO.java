@@ -12,11 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PmsProductDAO {
-    public void insert() {
+    public void insert() throws SQLException {
+        // 获取数据库连接
+        Connection con = DBUtil.getConnection();
 
+        // 构建并执行 sql
+        Statement stmt = con.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE);
+        boolean cnt = stmt.execute("INSERT into pms_product (name, price) VALUES ('红牛', 4.5)");
     }
 
-    public void updateByPrimaryKey() {
+    public void updateByPrimaryKey() throws SQLException {
 
     }
 
