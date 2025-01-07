@@ -5,6 +5,7 @@ import zbh.combat.mysql.domain.entity.PmsProductDO;
 import zbh.combat.mysql.domain.vo.PmsProductVO;
 import zbh.combat.mysql.service.PmsProductService;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,5 +23,17 @@ public class PmsProductServiceImpl implements PmsProductService {
         // 构造 VO 返回结果
         pmsProductDOList.forEach(item -> pmsProductVOList.add(item.toPmsProductVO()));
         return pmsProductVOList;
+    }
+
+    @Override
+    public int insert() throws SQLException {
+        PmsProductDAO pmsProductDAO = new PmsProductDAO();
+        return pmsProductDAO.insert();
+    }
+
+    @Override
+    public int insert(String name, BigDecimal price) throws SQLException {
+        PmsProductDAO pmsProductDAO = new PmsProductDAO();
+        return pmsProductDAO.insert(name, price);
     }
 }

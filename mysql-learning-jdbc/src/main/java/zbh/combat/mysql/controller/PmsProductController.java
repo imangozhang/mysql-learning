@@ -5,6 +5,7 @@ import zbh.combat.mysql.domain.vo.PmsProductVO;
 import zbh.combat.mysql.service.PmsProductService;
 import zbh.combat.mysql.service.impl.PmsProductServiceImpl;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,5 +20,15 @@ public class PmsProductController {
         PmsProductService pmsProductService = new PmsProductServiceImpl();
         List<PmsProductVO> productList = pmsProductService.list();
         return CommonResult.success(productList);
+    }
+
+    public CommonResult<Integer> insert() throws SQLException {
+        PmsProductService pmsProductService = new PmsProductServiceImpl();
+        return CommonResult.success(pmsProductService.insert());
+    }
+
+    public CommonResult<Integer> insert(String name, BigDecimal price) throws SQLException {
+        PmsProductService pmsProductService = new PmsProductServiceImpl();
+        return CommonResult.success(pmsProductService.insert(name, price));
     }
 }

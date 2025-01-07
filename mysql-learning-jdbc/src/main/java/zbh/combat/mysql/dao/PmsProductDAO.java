@@ -4,21 +4,31 @@ import zbh.combat.mysql.domain.entity.PmsProductDO;
 import zbh.combat.mysql.utils.DBUtil;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PmsProductDAO {
-    public void insert() throws SQLException {
+    public int insert() throws SQLException {
         // 获取数据库连接
         Connection con = DBUtil.getConnection();
 
         // 构建并执行 sql
         Statement stmt = con.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE);
-        boolean cnt = stmt.execute("INSERT into pms_product (name, price) VALUES ('红牛', 4.5)");
+        String sql = "INSERT into pms_product (name, price) VALUES (" + "'红牛'" + ", 4.5" + ")";
+        return stmt.executeUpdate(sql);
+    }
+
+    public int insert(String name, BigDecimal price) throws SQLException {
+        // 获取数据库连接
+        Connection con = DBUtil.getConnection();
+
+        // 构建并执行 sql
+        String sql = "INSERT into pms_product (name, price) VALUES (?, ?)";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setString(1, name);
+        pstmt.setBigDecimal(2, price);
+        return pstmt.executeUpdate();
     }
 
     public void updateByPrimaryKey() throws SQLException {
