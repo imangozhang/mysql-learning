@@ -15,19 +15,20 @@ public class PmsProductDAO {
 
         // 构建并执行 sql
         Statement stmt = con.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE);
-        String sql = "INSERT into pms_product (name, price) VALUES (" + "'红牛'" + ", 4.5" + ")";
+        String sql = "INSERT into pms_product (name, price, product_sn) VALUES (" + "'红牛'" + ", 4.5" + ", 's10000678'" + ")";
         return stmt.executeUpdate(sql);
     }
 
-    public int insert(String name, BigDecimal price) throws SQLException {
+    public int insert(String name, BigDecimal price, String sn) throws SQLException {
         // 获取数据库连接
         Connection con = DBUtil.getConnection();
 
         // 构建并执行 sql
-        String sql = "INSERT into pms_product (name, price) VALUES (?, ?)";
+        String sql = "INSERT into pms_product (name, price, product_sn) VALUES (?, ?, ?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setString(1, name);
         pstmt.setBigDecimal(2, price);
+        pstmt.setString(3, sn);
         return pstmt.executeUpdate();
     }
 

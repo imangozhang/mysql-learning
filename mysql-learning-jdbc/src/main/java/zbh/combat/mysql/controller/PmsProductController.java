@@ -27,8 +27,8 @@ public class PmsProductController {
         return CommonResult.success(pmsProductService.insert());
     }
 
-    public CommonResult<Integer> insert(String name, BigDecimal price) throws SQLException {
+    public CommonResult<Integer> insert(String name, BigDecimal price, String sn) throws SQLException {
         PmsProductService pmsProductService = new PmsProductServiceImpl();
-        return CommonResult.success(pmsProductService.insert(name, price));
+        return CommonResult.success(pmsProductService.insert(name, price, sn));
     }
 }

@@ -32,8 +32,8 @@ public class PmsProductServiceImpl implements PmsProductService {
     }
 
     @Override
-    public int insert(String name, BigDecimal price) throws SQLException {
+    public int insert(String name, BigDecimal price, String sn) throws SQLException {
         PmsProductDAO pmsProductDAO = new PmsProductDAO();
-        return pmsProductDAO.insert(name, price);
+        return pmsProductDAO.insert(name, price, sn);
     }
 }

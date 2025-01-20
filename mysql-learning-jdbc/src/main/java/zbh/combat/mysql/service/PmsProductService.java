@@ -12,5 +12,5 @@ public interface PmsProductService {
 
     int insert() throws SQLException;
 
-    int insert(String name, BigDecimal price) throws SQLException;
+    int insert(String name, BigDecimal price, String sn) throws SQLException;
 }

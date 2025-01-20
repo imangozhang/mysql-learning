@@ -15,10 +15,10 @@ public class JDBCApplication {
         PmsProductController productController = new PmsProductController();
 
         // 插入数据（无参）
-        productController.insert();
+        //productController.insert();
 
         // 插入数据（含参）
-        productController.insert("奥利奥饼干", BigDecimal.valueOf(7.8));
+        //productController.insert("奥利奥饼干", BigDecimal.valueOf(7.8), "n200004545");
 
         // 查看列表
         CommonResult<List<PmsProductVO>> productResult = productController.getList();

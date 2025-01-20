@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBUtil {
-    private static final String URL="jdbc:mysql:///teachingdb?useSSL=false";
+    private static final String URL="jdbc:mysql:///learning?useSSL=false";
     private static final String NAME="root";
-    private static final String PASSWORD="123456";
+    private static final String PASSWORD="Imango@0603";
 
     private static Connection conn=null;
 
